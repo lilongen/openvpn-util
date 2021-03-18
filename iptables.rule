@@ -1,0 +1,9 @@
+
+iptables -t filter -A FORWARD -j ACCEPT
+#iptables -A FORWARD -j ACCEPT
+
+iptables -t nat -A POSTROUTING -s 10.181.0.0/24 -o eth0 -j MASQUERADE
+iptables -t nat -A POSTROUTING -s 10.182.0.0/24 -o eth0 -j MASQUERADE
+iptables -t nat -A POSTROUTING -s 10.183.0.0/24 -o eth0 -j MASQUERADE
+iptables -t nat -A POSTROUTING -s 10.184.0.0/24 -o eth0 -j MASQUERADE
+
