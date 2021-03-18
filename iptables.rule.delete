@@ -1,4 +1,6 @@
 
+# iptables -t filter -P FORWARD DROP
+
 iptables -t filter -D FORWARD -j ACCEPT
 #iptables -D FORWARD -j ACCEPT
 
