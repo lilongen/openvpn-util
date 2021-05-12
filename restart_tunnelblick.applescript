@@ -1,4 +1,10 @@
 #!/usr/bin/osascript
-tell application "Tunnelblick" to quit
-delay 2
-tell application "Tunnelblick" to launch
+#
+
+do shell script "echo restart Tunnelblick..."
+tell application "Tunnelblick"
+  quit
+  delay 5
+  launch
+end tell
+do shell script "echo restart Tunnelblick... done!"
