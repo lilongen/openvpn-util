@@ -28,4 +28,11 @@ resource "aws_eip" "ec2_public_eip" {
   vpc = true
 }
 
+data "aws_instances" "test" {
+  filter {
+    name = "ids"
+    values = ["i-08576e98179d60049"]
+  }
 
+  instance_state_names = ["running", "stopped"]
+}

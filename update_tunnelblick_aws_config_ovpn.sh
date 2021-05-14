@@ -2,10 +2,11 @@
 # automatically update tunnelblock client config file remote host
 #
 
-ovpn_location="/Library/Application Support/Tunnelblick/Shared/"
+tunnelblick_ovpn_location="/Library/Application Support/Tunnelblick/Shared/"
+ovpn_source_location="/Users/lilongen/onedrive/aws/openvpn/client_config/"
 file_tfstate="./terraform/terraform.tfstate"
 echo "find candidated ovpn config file ..."
-sudo find "$ovpn_location" -name "*.ovpn" | grep aws-ov-bw | tee candidated.config.files
+sudo find "$tunnelblick_ovpn_location" "$ovpn_source_location" -name "*.ovpn" | grep aws-ov-bw | tee candidated.config.files
 
 timestamp=$(date "+%Y%m%d.%H%M%S")
 new_eip=$(grep -o '"public_ip": .*' $file_tfstate | awk -F'"' '{print $4}')
