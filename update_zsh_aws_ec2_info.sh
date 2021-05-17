@@ -7,5 +7,6 @@ file_tfstate="./terraform/terraform.tfstate"
 public_ip="$(grep -o '"public_ip": .*' $file_tfstate | awk -F'"' '{print $4}')"
 echo "public_ip: $public_ip"
 
-perl -i -pE 's/(awsHost=).*/$1'${public_ip}'/g' /Users/lilongen/github/awssshsocks/vars.sh
-source /Users/lilongen/github/awssshsocks/vars.sh
+file_aws_vars=/Users/lilongen/github/awssshsocks/vars.sh
+perl -i -pE 's/(awsHost=).*/${1}'${public_ip}'/g' $file_aws_vars
+echo source $file_aws_vars
