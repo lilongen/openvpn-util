@@ -2,6 +2,11 @@
 # automatically renew ec2 eip and update tunnelblock client config file remote host
 #
 
+echo "disconnect Tunnelblick aws connection ..."
+osascript ./disconnect_tunnelblick_aws_connection.applescript
+sleep 8
+echo "disconnect Tunnelblick aws connection ... done"
+
 cd terraform
 echo "destory last created eip ..."
 terraform destroy
