@@ -2,7 +2,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 3.27"
+      version = " 3.40.0"
     }
   }
 
@@ -20,6 +20,9 @@ variable "ec2_id" {
 }
 
 resource "aws_eip" "ec2_public_eip" {
+  tags = {
+    name = "created-by-vpn-util"
+  }
   instance = var.ec2_id
   vpc = true
 }
