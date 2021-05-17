@@ -7,7 +7,9 @@ python3 convert_cidr_to_push_entry.py goog_cidr.yaml >> push_entrys_goog
 
 bw_all='bw_all.csv'
 bw_special='bw_special.csv'
+bw_misc='bw_misc.csv'
 
+cat $bw_misc >> $bw_all
 for bw_file in ${bw_all} ${bw_special}; do
     awk -F',' '{print $3}' ${bw_file} > ${bw_file}.domain
     dig -f ${bw_file}.domain | tee  ${bw_file}.domain.dig
