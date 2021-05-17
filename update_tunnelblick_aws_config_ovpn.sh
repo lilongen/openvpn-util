@@ -28,5 +28,5 @@ sudo find "$tunnelblick_ovpn_location" "$ovpn_source_location" -name "*.ovpn" | 
 
 timestamp=$(date "+%Y%m%d.%H%M%S")
 echo "'remote host' in these files will be updated to '${public_ip}' ..."
-cat candidated.config.files | xargs -I {} sudo perl -i.${timestamp} -pE 's/(remote) [\d\.]* (\d+)/$1 '${public_ip}' $2/g' {}
+cat candidated.config.files | xargs -I {} sudo perl -i.${timestamp} -pE 's/(remote) [\d\.]* (\d+)/${1} '${public_ip}' ${2}/g' {}
 echo "aws config.ovpn ... updated!"
