@@ -7,19 +7,9 @@ osascript ./disconnect_tunnelblick_aws_connection.applescript
 sleep 8
 echo "disconnect Tunnelblick aws connection ... done"
 
-cd terraform
-echo "destory last created eip ..."
-terraform destroy
-echo "destory last created eip ... done"
-
-sleep 3
-
 echo "renew ec2 eip ..."
-terraform plan
-terraform apply
+python ./pyexpect_renew_ec2_eip.py
 echo "renew ec2 eip ... done!"
-cd ..
-
 
 echo "udpate tunnelblick aws openvpn client config file ..."
 ./update_tunnelblick_aws_config_ovpn.sh
