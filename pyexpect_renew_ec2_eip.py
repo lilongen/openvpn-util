@@ -23,6 +23,8 @@ ret = subprocess.check_output(f'{terraform} plan', shell=True).decode()
 print(ret)
 print('terraform plan ... done')
 
+time.sleep(1)
+
 print('terraform apply ...')
 child = pexpect.spawn(f'{terraform} apply', logfile=sys.stdout.buffer)
 child.expect('.*Enter a value:.*')
