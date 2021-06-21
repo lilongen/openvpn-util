@@ -13,7 +13,10 @@ cat $bw_misc >> $bw_all
 for bw_file in ${bw_all} ${bw_special}; do
     awk -F',' '{print $3}' ${bw_file} > ${bw_file}.domain
     dig -f ${bw_file}.domain | tee  ${bw_file}.domain.dig
-    grep -P -v '^(;|$)' ${bw_file}.domain.dig | grep -P '[\d+\.]{3}\.\d+$' | awk '{print substr($1,0,length($1) - 1) " " $5}' > ${bw_file}.domain.dig.pair
+    grep -P -v '^(;|$)' ${bw_file}.domain.dig \
+        | grep -P '[\d+\.]{3}\.\d+$' \
+        | awk '{print substr($1,0,length($1) - 1) " " $5}' \
+        > ${bw_file}.domain.dig.pair
     awk -F' ' '{print $2}' ${bw_file}.domain.dig.pair > ${bw_file}.domain.dig.pair.ip
 
     final_out="push_entrys_${bw_file:0:-4}" # remove '.csv'
